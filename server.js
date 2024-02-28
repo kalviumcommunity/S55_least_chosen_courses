@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
+const routes = require('./route')
+
 
 let connectionStatus = 'disconnected';
 
@@ -14,6 +16,8 @@ const startDatabase = async () => {
         connectionStatus = "error";
     }
 };
+
+app.use('/',routes)
 
 const stopDatabase = async () => {
     await mongoose.disconnect();
@@ -28,9 +32,9 @@ app.get("/ping", (req, res) => {
     res.send('Hello');
 });
 
-app.listen(3080, () => {
+app.listen(4001, () => {
     startDatabase();
-    console.log('Port 3080');
+    console.log('Port 3020');
 });
 
 module.exports = app;
