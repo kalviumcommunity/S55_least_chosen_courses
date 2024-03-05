@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.6.7",
     "netlify-cli": "^17.17.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
