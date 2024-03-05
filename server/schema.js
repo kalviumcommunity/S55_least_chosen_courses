@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const testSchema = mongoose.Schema({
     name: String,
     duration: String,
-    ratings: Number,
+    ratings: String,
     imageLink: String
 });
-const Model = mongoose.model("LeastCourses", testSchema);
-module.exports = {Model};
+const UserModel = mongoose.model("leastchosencourses-collection", testSchema);
+module.exports = {UserModel};

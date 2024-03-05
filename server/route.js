@@ -1,6 +1,7 @@
 const express = require('express')
-const { Model } = require('mongoose')
+const { UserModel} = require('./schema')
 const router = express.Router()
+
 
 router.use(express.json())
 
@@ -22,9 +23,9 @@ router.delete('/delete',(req,res)=>{
 })
 
 
-router.get('/courses',async(req,res) =>{
+router.get('/course',async(req,res) =>{
     try{
-        const test = await Model.find()
+        const test = await UserModel.find({})
         res.json(test)
 
     }catch(err){

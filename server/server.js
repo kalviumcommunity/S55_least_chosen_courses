@@ -39,7 +39,7 @@ app.get("/ping", (req, res) => {
 
 app.listen(4001, () => {
     startDatabase();
-    console.log('Port 3020');
+    console.log('Port 4001');
 });
 
 module.exports = app;
