@@ -32,4 +32,15 @@ router.get('/course',async(req,res) =>{
         console.log(err)
     }
 })
+
+
+app.post('/add', async (req, res) => {
+    try {
+        const newData = UserModel.create(req.body);
+        res.send(newData);
+    } catch (error) {
+        console.error(error);
+        res.send('Error');
+    }
+});
 module.exports = router
