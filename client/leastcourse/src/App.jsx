@@ -1,11 +1,20 @@
 import Home from './components/Home'
+import React from "react";
+import Form from "./components/Form.jsx"
+import { BrowserRouter,Routes, Route } from "react-router-dom";
 
 function App() {
  
   return (
     <>
       <div>
-      <Home/>
+        <BrowserRouter>
+        
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/insert" element={<Form />}/>
+      </Routes>
+        </BrowserRouter>
       </div>
     </>
   )

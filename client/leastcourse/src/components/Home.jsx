@@ -3,6 +3,7 @@ import './Home.css'
 import cover from '../assets/school.png'
 import logo from '../assets/classmates.png'
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 function App() {
   const [state, setState] = useState([]);
@@ -29,10 +30,11 @@ function App() {
 
             <img className='logo' src={logo} alt="" /><h1>StudyDotCom</h1>
         </div>
-        {/* <div className='Listbtns'>
-          <h2>Lists</h2>
-         
-        </div> */}
+        
+
+        <div>
+          <Link to="/insert">Add course</Link>
+        </div>
         <div className='search-btn'>
             <input 
               type='text' 
