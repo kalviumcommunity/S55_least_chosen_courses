@@ -1,17 +1,17 @@
-/* body {
-    background-color: rgb(255, 236, 201);
-    background-image: url("../assets/CampNou.jpg");
+ .body-img{
+    background-image: url("https://www.unomaha.edu/university-communications/_files/img/1175i-web_mc_homepage_visit_mar.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    top: 0px;
     min-height: 88vh;
     width: 100%;
-  } */
+  }
+  
   
   .form-container {
     font-family: 'DM Serif Display', serif;
     background-color: rgb(254, 254, 246);
-    background-image: url("https://kalvium.community/images/launcher-hero-bg.svg");
     object-fit: cover;
     background-position: start;
     background-repeat: repeat;
@@ -63,13 +63,13 @@
   .button {
     font-family: 'DM Serif Display', serif;
     margin-top: 1rem;
-    background-color: #e48a01;
+    background-color: #843d31;
     color: white;
     cursor: pointer;
   }
   
   .button:hover {
-    background-color: #ff7700;
+    background-color: #8b2c2c;
     align-items: center;
     justify-content: space-between;
     gap: 0px;
@@ -80,25 +80,5 @@
   .error {
     color: red;
     margin-top: -1px;
-  }
-  
-  @media (max-width: 600px) {
-    .app {
-      width: 90%;
-      margin-inline: auto;
-      margin-top: 20vh;
-      padding: 15px;
-    }
-  
-    .text {
-      position: relative;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-  
-    input,
-    .button {
-      font-size: 0.9rem;
-    }
   }
   
