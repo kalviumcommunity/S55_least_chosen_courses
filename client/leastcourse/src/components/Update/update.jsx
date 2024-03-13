@@ -23,7 +23,7 @@ function Update() {
     }, [id, setValue]);
 
     const onSubmit = async formData => {
-        axios.put(`https://s55-least-chosen-courses.onrender.com/updateCard/` +id,formData)
+        axios.put(`https://s55-least-chosen-courses.onrender.com/updateCourse/` +id,formData)
             .then(() => {
                 navigate("/"); 
                 console.log(formData)
@@ -57,7 +57,7 @@ function Update() {
                     type="text"
                     {...register("ratings", { required: true, min: 1, max: 10 })}
                 />
-                {errors.calf_ratings && <p className="error">Calf Ratings must be between 1 and 10</p>}
+                {errors.ratings && <p className="error">Ratings must be between 1 and 10</p>}
 
                 <label>Image URL:</label>
                 <input
