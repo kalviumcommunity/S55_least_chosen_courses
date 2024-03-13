@@ -1,6 +1,7 @@
 import Home from './components/Home'
 import React from "react";
 import Form from "./components/Form.jsx"
+import Update from "./components/Update/update.jsx"
 import { BrowserRouter,Routes, Route } from "react-router-dom";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/insert" element={<Form />}/>
+          <Route path="/update/:id" element={<Update/>}/>
       </Routes>
         </BrowserRouter>
       </div>

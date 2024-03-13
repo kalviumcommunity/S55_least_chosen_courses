@@ -8,4 +8,4 @@
 
 Deployed Link: https://s55-least-chosen-courses.onrender.com/
 
-Front-End Deployed Link: https://studydotcom.netlify.app/
+FrontEnd Deployed Link: https://studydotcom.netlify.app/

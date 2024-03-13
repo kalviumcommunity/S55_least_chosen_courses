@@ -22,10 +22,12 @@ function Form() {
   };
 
   return (
+    <div className="body-img">
     <div className="form-container">
-      {/* <div className="bg">
-        <img src={bgIMG} alt="" className="bgIMG"/>
-      </div> */}
+      <div className="heading">
+        <h2>ADD A COURSE</h2>
+      </div>
+    
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <label>Name:</label>
         <input
@@ -61,6 +63,7 @@ function Form() {
           Submit
         </button>
       </form>
+    </div>
     </div>
   );
 }
