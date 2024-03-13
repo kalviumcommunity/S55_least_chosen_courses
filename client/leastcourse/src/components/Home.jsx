@@ -87,11 +87,11 @@ function App() {
               </div>
 
               <div className="info">
-                <div className="flav">
+                <div className="fl">
                   <h2>{course.name}</h2>
                 </div>
 
-                <div className="taste-color">
+                <div className="sub-heading">
                   <p>Duration: {course.duration}</p>
                   <p>Rating: {course.ratings}</p>
                 </div>
