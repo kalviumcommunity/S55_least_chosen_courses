@@ -44,7 +44,7 @@ router.get('/course',async(req,res) =>{
 
 router.post('/add', async (req, res) => {
     try {
-        const { error, value } = NewSchemaSchema.validate(req.body);
+        const { error, value } = NewSchema.validate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
