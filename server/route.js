@@ -44,7 +44,7 @@ router.get('/course',async(req,res) =>{
 
 router.post('/add', async (req, res) => {
     try {
-        const { error, value } = updateSchema.validate(req.body);
+        const { error, value } = NewSchemaSchema.validate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
@@ -78,14 +78,14 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
-router.put(`/updateCourse/:id`, async (req, res) => {
+router.put(`/updateCard/:id`, async (req, res) => {
     try {
-        const { error, value } = updateSchema.validate(req.body);
+        const { error, value } = NewSchema.validate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
         const _id = req.params.id;
-        const updateUser = await UserModel.findByIdAndUpdate(_id, req.body, { new: true });
+        const updateUser = await UserModel.findByIdAndUpdate({_id:_id},value);
         res.json(updateUser);
     } catch (error) {
         console.error(error);

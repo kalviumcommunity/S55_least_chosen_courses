@@ -23,7 +23,7 @@ function Update() {
     }, [id, setValue]);
 
     const onSubmit = async formData => {
-        axios.put(`https://s55-least-chosen-courses.onrender.com/updateCourse/` +id,formData)
+        axios.put(`https://s55-least-chosen-courses.onrender.com/updateCard/` +id,formData)
             .then(() => {
                 navigate("/"); 
                 console.log(formData)
@@ -50,7 +50,7 @@ function Update() {
                     type="text"
                     {...register("duration", { required: true })}
                 />
-                {errors.age && <p className="error">Age is required</p>}
+                {errors.duration && <p className="error">Age is required</p>}
 
                 <label>Ratings:</label>
                 <input
