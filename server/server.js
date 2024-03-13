@@ -13,7 +13,7 @@ let connectionStatus = 'disconnected';
 const startDatabase = async () => {
     try {
         await mongoose.connect (process.env.MongoURI,{
-        serverSelectionTimeoutMS: 30000
+       
         });
         connectionStatus = "Database Connected successfully"
     } catch (err) {
