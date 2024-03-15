@@ -4,6 +4,8 @@ const { loginMethod } = require('./TokenSchema')
 const router = express.Router();
 const Joi = require("joi");
 
+const jwt = require('jsonwebtoken') 
+
 router.use(express.json());
 
 const NewSchema = Joi.object({
@@ -125,6 +127,22 @@ router.post('/logout',(req,res)=>{
 
   res.status(200).json({message:'Logout succesful'})
 })
+
+
+app.post('/auth', async(req,res) => {
+  try{const {username,password} = req.body
+  const user = {
+      "username" : username,
+      "password" : password
+  }
+  const ACCESS_TOKEN = jwt.sign(user,process.env.ACCESS_TOKEN)
+  res.cookie('token',ACCESS_TOKEN,{maxAge:365*24*60*60*1000})
+  res.json({"acsessToken" : ACCESS_TOKEN})
+}catch(err){
+  console.error(err)
+  res.status(500).json({error:'Internal Server Error'})
+}
+});
 
 
 module.exports = router;

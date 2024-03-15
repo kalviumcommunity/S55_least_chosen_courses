@@ -32,6 +32,7 @@ function Signup() {
 
   return (
     <div className="form-container">
+        <h2>Sign Up!!</h2>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <label>Username:</label>
         <input type="text" {...register("username", { required: true })} />
