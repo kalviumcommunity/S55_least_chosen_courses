@@ -129,7 +129,7 @@ router.post('/logout',(req,res)=>{
 })
 
 
-app.post('/auth', async(req,res) => {
+router.post('/auth', async(req,res) => {
   try{const {username,password} = req.body
   const user = {
       "username" : username,
