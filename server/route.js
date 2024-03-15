@@ -1,5 +1,6 @@
 const express = require("express");
 const { UserModel } = require("./schema");
+const { loginMethod } = require('./TokenSchema')
 const router = express.Router();
 const Joi = require("joi");
 
@@ -87,5 +88,43 @@ router.put(`/updateCard/:id`, async (req, res) => {
     res.status(500).send("Error");
   }
 });
+
+router.post('/signup',async(req,res)=>{
+  try{
+      const user = await loginMethod.create({
+          username:req.body.username,
+          password:req.body.password
+      })
+      res.send(user)
+  }catch(err){
+      console.error(err)
+  }
+
+})
+router.post('/login', async (req, res) => {
+  try {
+      const { username, password } = req.body;
+      const user = await loginMethod.findOne({ username, password });
+      
+      if (!user) {
+          return res.status(401).json({ error: 'Invalid username / password' });
+      }
+
+      
+      res.status(200).json({ user });
+      
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.post('/logout',(req,res)=>{
+  res.clearCookie('username')
+  res.clearCookie('password')
+
+  res.status(200).json({message:'Logout succesful'})
+})
+
 
 module.exports = router;
