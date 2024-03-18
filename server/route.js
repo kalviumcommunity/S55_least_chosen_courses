@@ -129,6 +129,17 @@ router.post('/logout',(req,res)=>{
 })
 
 
+router.get('/users',async(req,res)=>{
+  try{
+      const test = await loginMethod.find({})
+      console.log(test)
+      res.send(test)
+  }catch(err){
+      console.log(err)
+  }
+})
+
+
 router.post('/auth', async(req,res) => {
   try{const {username,password} = req.body
   const user = {
