@@ -13,7 +13,10 @@ function Home() {
   const [showLoginSuccessMessage, setShowLoginSuccessMessage] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [searchText, setSearchText] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [selectedUser, setSelectedUser] = useState("All");
+  const [users, setUsers] = useState([]);
+  const [filteredCourses, setFilteredCourses] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,14 +24,13 @@ function Home() {
       try {
         const response = await axios.get("https://s55-least-chosen-courses.onrender.com/course");
         setCourses(response.data);
+        setFilteredCourses(response.data); // Initialize filteredCourses with all courses
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-  }, []);
 
-  useEffect(() => {
     const signupSuccess = sessionStorage.getItem('signupSuccess');
     if (signupSuccess) {
       setShowSignupSuccessMessage(true);
@@ -49,6 +51,16 @@ function Home() {
 
     const loginStatus = sessionStorage.getItem("login");
     setIsLoggedIn(loginStatus === "true");
+
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('https://s55-least-chosen-courses.onrender.com/users');
+        setUsers(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUsers();
   }, []);
 
   const handleDelete = async (id) => {
@@ -56,6 +68,7 @@ function Home() {
       await axios.delete(`https://s55-least-chosen-courses.onrender.com/delete/${id}`);
       const response = await axios.get("https://s55-least-chosen-courses.onrender.com/course");
       setCourses(response.data);
+      setFilteredCourses(response.data); // Update filteredCourses after deletion
     } catch (error) {
       console.error("Error deleting data:", error);
     }
@@ -71,9 +84,17 @@ function Home() {
     setSearchText(searchInput);
   };
 
-  const filteredCourses = courses.filter(course =>
-    course.name.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const handleUserSelect = (username) => {
+    setSelectedUser(username);
+    setSearchText(''); 
+
+    if (username === 'All') {
+      setFilteredCourses(courses); // Display all courses if 'All' is selected
+    } else {
+      const userCourses = courses.filter(course => course.created_by === username);
+      setFilteredCourses(userCourses)
+    }
+  };
 
   return (
     <>
@@ -81,6 +102,7 @@ function Home() {
         <div className="name">
           <img className="logo" src={logo} alt="" />
           <h1>StudyDotCom</h1>
+          {console.log(users)}
         </div>
 
         {isLoggedIn ? (
@@ -98,11 +120,13 @@ function Home() {
           </>
         )}
 
-        <div>
-          <Link to="/insert" className="btn-course">
-            Add course
-          </Link>
-        </div>
+        {isLoggedIn && (
+          <div>
+            <Link to="/insert" className="btn-course">
+              Add course
+            </Link>
+          </div>
+        )}
 
         <div className="search-btn">
           <input
@@ -115,6 +139,22 @@ function Home() {
           <button className="s-btn" onClick={handleSearch}>Search</button>
         </div>
       </div>
+
+      {isLoggedIn && (
+        <div className="dropdown-container">
+          <select
+            className="dropdown"
+            onChange={(e) => handleUserSelect(e.target.value)}
+            value={selectedUser}
+          >
+            {['All', ...users.map(user => user.username)].map((user, index) => (
+              <option key={index} value={user}>
+                {user}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       <div id="header-image-menu">
         <h2 id="image-text"></h2>
@@ -135,8 +175,8 @@ function Home() {
         <div className="content">
           {filteredCourses.map((course, index) => (
             <div
-              className={`card custom-card card-${index + 1}`}
-              key={course._id}
+              className={`card custom-card card-${course._id}`} 
+              key={course._id} 
             >
               <div className="images">
                 <img src={course.imageLink} alt={course.name} />

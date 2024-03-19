@@ -88,6 +88,26 @@ body{
 
 }
 
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 50vh;
+  position: absolute;
+  top: 120vh;
+  left: 38vw;
+}
+
+.dropdown{
+  border: none;
+  height: 5vh;
+  width: 50vw;
+  border-radius: 5px;
+  background-color: #eceaea;
+}
+
+
 .search::placeholder{
     position: absolute;
     align-items: center;
