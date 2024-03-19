@@ -13,6 +13,7 @@ const NewSchema = Joi.object({
   duration: Joi.string().required(),
   ratings: Joi.string().required(),
   imageLink: Joi.string().required(),
+  created_by : Joi.string().optional()
 });
 
 router.get("/get", (req, res) => {
