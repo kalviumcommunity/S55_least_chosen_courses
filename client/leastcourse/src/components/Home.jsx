@@ -93,6 +93,7 @@ function Home() {
     } else {
       const userCourses = courses.filter(course => course.created_by === username);
       setFilteredCourses(userCourses)
+      
     }
   };
 
