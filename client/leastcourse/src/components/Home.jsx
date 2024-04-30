@@ -24,7 +24,9 @@ function Home() {
       try {
         const response = await axios.get("https://s55-least-chosen-courses.onrender.com/course");
         setCourses(response.data);
-        setFilteredCourses(response.data); 
+
+        setFilteredCourses(response.data); // Initialize filteredCourses with all courses
+
       } catch (error) {
         console.error(error);
       }
@@ -93,7 +95,7 @@ function Home() {
     } else {
       const userCourses = courses.filter(course => course.created_by === username);
       setFilteredCourses(userCourses)
-      
+
     }
   };
 
