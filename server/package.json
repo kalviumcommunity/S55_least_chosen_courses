@@ -1,0 +1,23 @@
+{
+  "name": "least_chosen_courses",
+  "version": "1.0.0",
+  "description": "A website that shows the List of courses that are hardly pursued in universities and colleges. Less number of graduates and Pass-outs in a particular course and which course has low market demands are listed on this website.",
+  "main": "index.js",
+  "scripts": {
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "mongoose": "^8.3.2",
+
+    "nodemon": "^3.1.0"
+  }
+}
